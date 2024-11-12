@@ -25,8 +25,11 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="opcion01">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registro Mascota"/>
+                <Property name="text" type="java.lang.String" value="Registro Paciente"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opcion01ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
@@ -41,7 +44,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="opcion03">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registro Cliente"/>
+                <Property name="text" type="java.lang.String" value="Registro Especialidad de Atencion"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -49,7 +52,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="opcion04">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Datos Empleados"/>
+                <Property name="text" type="java.lang.String" value="Datos Doctor"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

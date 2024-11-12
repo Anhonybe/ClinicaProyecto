@@ -1,6 +1,11 @@
 package Vista;
 
 import Controlador.ControladorInicio;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JPanel;
 
 public class VentanaLogin extends javax.swing.JPanel {
 
@@ -11,12 +16,24 @@ public class VentanaLogin extends javax.swing.JPanel {
         controlador = new ControladorInicio(this);
         controlador.initLogin();
     }
+    class JPanelGradient extends JPanel{  //Para poner un degradado al panel
+        protected void paintComponent(Graphics g){
+            Graphics2D g2d = (Graphics2D)g ;
+            int width = getWidth();
+            int height = getHeight();
+
+            Color color1= new Color(175,123,215);
+            Color color2= new Color(124,210,243);
+            GradientPaint gp = new GradientPaint(0,0,color1,180,height,color2);
+            g2d.setPaint(gp);
+            g2d.fillRect(0, 0, width, height);
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        imgLogo = new Componet.Imagen();
         jlbTextRegistr = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         txtUsuario = new javax.swing.JTextField();
@@ -30,12 +47,12 @@ public class VentanaLogin extends javax.swing.JPanel {
         jlbTittle3 = new javax.swing.JLabel();
         jlbTittle4 = new javax.swing.JLabel();
         btnOjoPassword = new javax.swing.JLabel();
+        jPanel1 = new JPanelGradient();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        imgLogo.setImage(new javax.swing.ImageIcon(getClass().getResource("/_Icons/logoTipo2.png"))); // NOI18N
-        add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 8, 50, 60));
 
         jlbTextRegistr.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jlbTextRegistr.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -108,6 +125,14 @@ public class VentanaLogin extends javax.swing.JPanel {
             }
         });
         add(btnOjoPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 30, 30));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jLabel3);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_Icons/LogoLogin.png"))); // NOI18N
+        jPanel1.add(jLabel1);
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 430));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOjoPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOjoPasswordMouseClicked
@@ -126,9 +151,11 @@ public class VentanaLogin extends javax.swing.JPanel {
     public javax.swing.JButton btnIngresar;
     public javax.swing.JLabel btnIrRegistro;
     public javax.swing.JLabel btnOjoPassword;
-    public Componet.Imagen imgLogo;
     public Componet.Imagen imgUsuario;
     public Componet.Imagen imgUsuario1;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JPanel jPanel1;
     public javax.swing.JSeparator jSeparator1;
     public javax.swing.JSeparator jSeparator2;
     public javax.swing.JLabel jlbTextRegistr;

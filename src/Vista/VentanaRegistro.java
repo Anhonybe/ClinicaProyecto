@@ -1,6 +1,11 @@
 package Vista;
 
 import Controlador.ControladorInicio;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JPanel;
 
 public class VentanaRegistro extends javax.swing.JPanel {
 
@@ -11,12 +16,25 @@ public class VentanaRegistro extends javax.swing.JPanel {
         controlador = new ControladorInicio(this);
         controlador.initRegistro();
     }
+    
+    class JPanelGradient extends JPanel{  //Para poner un degradado al panel
+        protected void paintComponent(Graphics g){
+            Graphics2D g2d = (Graphics2D)g ;
+            int width = getWidth();
+            int height = getHeight();
+
+            Color color1= new Color(175,123,215);
+            Color color2= new Color(124,210,243);
+            GradientPaint gp = new GradientPaint(0,0,color1,180,height,color2);
+            g2d.setPaint(gp);
+            g2d.fillRect(0, 0, width, height);
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        imgLogo = new Componet.Imagen();
         jlbTextRegistr = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         txtUsuario = new javax.swing.JTextField();
@@ -27,19 +45,19 @@ public class VentanaRegistro extends javax.swing.JPanel {
         imgUsuario1 = new Componet.Imagen();
         jSeparator2 = new javax.swing.JSeparator();
         txtPassword = new javax.swing.JPasswordField();
-        jlbRegistro = new javax.swing.JLabel();
         jlbTittle4 = new javax.swing.JLabel();
         btnOjoPasswordConfir = new javax.swing.JLabel();
         txtPasswordConfir = new javax.swing.JPasswordField();
         jSeparator3 = new javax.swing.JSeparator();
         imgUsuario2 = new Componet.Imagen();
         btnOjoPassword = new javax.swing.JLabel();
+        jPanel1 = new JPanelGradient();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jlbRegistro = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        imgLogo.setImage(new javax.swing.ImageIcon(getClass().getResource("/_Icons/logoTipo2.png"))); // NOI18N
-        add(imgLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 8, 50, 60));
 
         jlbTextRegistr.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jlbTextRegistr.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -92,12 +110,6 @@ public class VentanaRegistro extends javax.swing.JPanel {
         txtPassword.setSelectionColor(new java.awt.Color(51, 0, 102));
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 160, 30));
 
-        jlbRegistro.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
-        jlbRegistro.setForeground(new java.awt.Color(51, 0, 102));
-        jlbRegistro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbRegistro.setText("Registro");
-        add(jlbRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 160, 47));
-
         jlbTittle4.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         jlbTittle4.setForeground(new java.awt.Color(51, 0, 102));
         jlbTittle4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -129,6 +141,21 @@ public class VentanaRegistro extends javax.swing.JPanel {
             }
         });
         add(btnOjoPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 30, 30));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/_Icons/LogoLogin.png"))); // NOI18N
+        jPanel1.add(jLabel2);
+        jPanel1.add(jLabel1);
+
+        jlbRegistro.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
+        jlbRegistro.setForeground(new java.awt.Color(51, 0, 102));
+        jlbRegistro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbRegistro.setText("Registro");
+        jPanel1.add(jlbRegistro);
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 440));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOjoPasswordConfirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOjoPasswordConfirMouseClicked
@@ -152,10 +179,12 @@ public class VentanaRegistro extends javax.swing.JPanel {
     public javax.swing.JLabel btnOjoPassword;
     public javax.swing.JLabel btnOjoPasswordConfir;
     public javax.swing.JButton btnRegistrar;
-    public Componet.Imagen imgLogo;
     public Componet.Imagen imgUsuario;
     public Componet.Imagen imgUsuario1;
     public Componet.Imagen imgUsuario2;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JPanel jPanel1;
     public javax.swing.JSeparator jSeparator1;
     public javax.swing.JSeparator jSeparator2;
     public javax.swing.JSeparator jSeparator3;

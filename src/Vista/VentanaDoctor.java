@@ -32,14 +32,14 @@ public class VentanaDoctor extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
         jPanel1.setForeground(new java.awt.Color(0, 153, 204));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "REGISTRO EMPLEADOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(51, 0, 153))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "REGISTRO DOCTOR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(51, 0, 153))); // NOI18N
 
         txtCodigoEmp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CODIGO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         txtNomEmp.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NOMBRE Y APELLIDO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         cbxCondicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DOCTOR", "ASISTENTE", "SECRETARIO/A", "LIMPIEZA" }));
-        cbxCondicion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CONDICION", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        cbxCondicion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CARGO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         btnAgregar.setBackground(new java.awt.Color(51, 0, 153));
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -149,6 +149,8 @@ public class VentanaDoctor extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
+
+        jPanel2.getAccessibleContext().setAccessibleName("REGISTRO DOCTOR");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

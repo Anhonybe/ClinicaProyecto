@@ -40,10 +40,10 @@ public class VentanaRegistroPaciente extends javax.swing.JInternalFrame {
 
         PanelPrincipal.setBackground(new java.awt.Color(0, 153, 255));
 
-        PanelDatos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "REGISTRO DE DATOS MASCOTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        PanelDatos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "REGISTRO DE DATOS PACIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         PanelDatos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        txtID.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID MASCOTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtID.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DNI", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         txtNombre.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NOMBRE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -52,7 +52,7 @@ public class VentanaRegistroPaciente extends javax.swing.JInternalFrame {
             }
         });
 
-        txtGenero.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RAZA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtGenero.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "GENERO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         txtEdad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "EDAD", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
@@ -91,7 +91,7 @@ public class VentanaRegistroPaciente extends javax.swing.JInternalFrame {
         });
 
         cbxEspecialidad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbxEspecialidad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID_PROPIETARIO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        cbxEspecialidad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ESPECIALIDAD DE ATENCION", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
         cbxEspecialidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxEspecialidadActionPerformed(evt);
@@ -165,7 +165,7 @@ public class VentanaRegistroPaciente extends javax.swing.JInternalFrame {
         txaResumenMascota.setEditable(false);
         txaResumenMascota.setColumns(20);
         txaResumenMascota.setRows(5);
-        txaResumenMascota.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RESUMEN DATOS DE MASCOTA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 18), new java.awt.Color(51, 0, 153))); // NOI18N
+        txaResumenMascota.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RESUMEN DATOS DE PACIENTE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 18), new java.awt.Color(51, 0, 153))); // NOI18N
         jScrollPane3.setViewportView(txaResumenMascota);
 
         btnBuscar.setBackground(new java.awt.Color(204, 204, 255));
@@ -193,7 +193,7 @@ public class VentanaRegistroPaciente extends javax.swing.JInternalFrame {
 
         txtNumMascotas.setBackground(new java.awt.Color(255, 255, 255));
         txtNumMascotas.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        txtNumMascotas.setText("Mascotas:");
+        txtNumMascotas.setText("Pacientes:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

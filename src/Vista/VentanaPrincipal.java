@@ -32,16 +32,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Servicios");
 
-        opcion01.setText("Registro Mascota");
+        opcion01.setText("Registro Paciente");
+        opcion01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcion01ActionPerformed(evt);
+            }
+        });
         jMenu2.add(opcion01);
 
         opcion02.setText("Registro Citas");
         jMenu2.add(opcion02);
 
-        opcion03.setText("Registro Cliente");
+        opcion03.setText("Registro Especialidad de Atencion");
         jMenu2.add(opcion03);
 
-        opcion04.setText("Datos Empleados");
+        opcion04.setText("Datos Doctor");
         jMenu2.add(opcion04);
 
         opcion05.setText("Datos Servicios");
@@ -64,6 +69,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void opcion01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion01ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opcion01ActionPerformed
 
     public static void main(String args[]) {
         /* Create and display the form */
