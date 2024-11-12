@@ -3,14 +3,14 @@ package Persistencia;
 import EstructurasListas.*;
 import Procesos.*;
 import java.io.*;
-import Modelo.Cliente;
+import Modelo.Especialidad;
 import java.util.ArrayList;
 
-public class DatosClientes {
+public class DatosEspecialidad {
 
     public static void GuardarEnArchivo(ListaEnlazada Lista) {
         try {
-            FileOutputStream fos = new FileOutputStream("InfoClientes.bin");
+            FileOutputStream fos = new FileOutputStream("InfoEspecialidad.bin");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(Lista);
             oos.close();
@@ -22,7 +22,7 @@ public class DatosClientes {
     public static ListaEnlazada RecuperarDeArchivo() {
         ListaEnlazada Lista = new ListaEnlazada();
         try {
-            FileInputStream fis = new FileInputStream("InfoClientes.bin");
+            FileInputStream fis = new FileInputStream("InfoEspecialidad.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
             Lista = (ListaEnlazada) ois.readObject();
             ois.close();
@@ -36,20 +36,20 @@ public class DatosClientes {
     
     private static final String URL_GUARDADO = "InfoClientes.bin";
 
-    private ArrayList<Cliente> listaClientes;
+    private ArrayList<Especialidad> listaClientes;
 
-    public DatosClientes() {
+    public DatosEspecialidad() {
         listaClientes = new ArrayList<>();
         cargarCitasDesdeArchivo();
     }
 
-    public ArrayList<Cliente> obtenerTodasLasCitas() {
+    public ArrayList<Especialidad> obtenerTodasLasCitas() {
         return new ArrayList<>(listaClientes);
     }
 
     private void cargarCitasDesdeArchivo() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(URL_GUARDADO))) {
-            listaClientes = (ArrayList<Cliente>) in.readObject();
+            listaClientes = (ArrayList<Especialidad>) in.readObject();
         } catch (FileNotFoundException e) {
             listaClientes = new ArrayList<>();
         } catch (IOException | ClassNotFoundException e) {

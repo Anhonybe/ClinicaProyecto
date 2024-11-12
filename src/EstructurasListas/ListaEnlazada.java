@@ -36,7 +36,7 @@ public class ListaEnlazada implements Serializable {
         fin.setSig(null);
     }
 
-    public Nodo BuscarCliente(String codbuscado) {
+    public Nodo BuscarEspecialidad(String codbuscado) {
         Nodo aux = ini;
         while (aux != null && !codbuscado.equalsIgnoreCase(aux.cli.getCodigo())) {
             aux = aux.getSig();
@@ -44,7 +44,7 @@ public class ListaEnlazada implements Serializable {
         return aux;
     }
 
-    public void EliminarCliente(Nodo actual) {
+    public void EliminarEspecialidad(Nodo actual) {
         if (actual != null) {
             if (ini == actual) {
                 ini = actual.getSig();
@@ -87,7 +87,7 @@ public class ListaEnlazada implements Serializable {
     public void imprimirLista() {
         Nodo aux = ini;
         while (aux != null) {
-            System.out.print(aux.getCli().getCodigo() + " -> ");
+            System.out.print(aux.getEsp().getCodigo() + " -> ");
             aux = aux.getSig();
         }
         System.out.println("null");

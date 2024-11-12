@@ -1,29 +1,26 @@
 package Controlador;
 
-import Modelo.ArregloMascotas;
+import Modelo.ArregloPaciente;
 import Modelo.Servicio;
 import Persistencia.DataServicio;
 import Pila.*;
 import Vista.*;
 import Procesos.*;
-import Persistencia.DatosEmpleado;
+import Persistencia.DatosDoctor;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Vista.VentanaEmpleado;
+import Vista.VentanaDoctor;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- *
- * @author FAMILIA
- */
+
 public class ControladorV4 implements ActionListener {
 
-    VentanaEmpleado vista;
-    PilaEmpleado Pila;
+    VentanaDoctor vista;
+    PilaDoctor Pila;
 
-    public ControladorV4(VentanaEmpleado vem) {
+    public ControladorV4(VentanaDoctor vem) {
         vista = vem;
 
         vista.btnAgregar.addActionListener(this);
@@ -31,17 +28,17 @@ public class ControladorV4 implements ActionListener {
         vista.btnVerPrimero.addActionListener(this);
         vista.btnVerUltimo.addActionListener(this);
         vista.btnBuscar.addActionListener(this);
-        Pila = new PilaEmpleado();
-        Pila = DatosEmpleado.RecuperaDeArchivo();
+        Pila = new PilaDoctor();
+        Pila = DatosDoctor.RecuperaDeArchivo();
         ProcesosV4.Presentacion(vista);
         ProcesosV4.MostrarDatosEnTabla(vista, Pila);
     }
 
-    //Metodo para escuchar los eventos de los componentes de Ventana Registro Empleado
+    //Metodo para escuchar los eventos de los componentes de Ventana Registro Doctor
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vista.btnAgregar) {
-            Pila.Agregar(ProcesosV4.LeerEmpleado(vista));
+            Pila.Agregar(ProcesosV4.LeerDoctor(vista));
             ProcesosV4.LimpiarEntradas(vista);
             ProcesosV4.MostrarDatosEnTabla(vista, Pila);
         }
@@ -58,30 +55,30 @@ public class ControladorV4 implements ActionListener {
         }
         if (e.getSource() == vista.btnBuscar) {
             String codbuscado = Mensajes.LeerTexto("Ingrese el "
-                    + "codigo del empleado a buscar");
+                    + "codigo del Doctor a buscar");
             Pila.BuscarPorCodigo(codbuscado);
         }
     }//fin action 
 
-    public static Empleado[] listaEmpleados() {
-        PilaEmpleado Pil = new PilaEmpleado();
-        Pil = DatosEmpleado.RecuperaDeArchivo();
+    public static Doctor[] listaDoctores() {
+        PilaDoctor Pil = new PilaDoctor();
+        Pil = DatosDoctor.RecuperaDeArchivo();
         int cantDatos = Pil.getPila().size();
-        Empleado arrayEmpleado[] = new Empleado[cantDatos];
+        Doctor arrayDoctor[] = new Doctor[cantDatos];
         for (int i = 0; i < cantDatos; i++) {
-            arrayEmpleado[i] = Pil.getPila().get(i);
+            arrayDoctor[i] = Pil.getPila().get(i);
         }
-        Empleado[] empleadosFiltrados = Arrays.stream(arrayEmpleado)
-                .filter(pet -> pet != null)
-                .toArray(Empleado[]::new);
-        return empleadosFiltrados;
+        Doctor[] DoctorFiltrados = Arrays.stream(arrayDoctor)
+                .filter(pat -> pat != null)
+                .toArray(Doctor[]::new);
+        return DoctorFiltrados;
     }
 
-    public static ArrayList<Empleado> listaDoctores(String condicion) {
-        ArrayList<Empleado> listaDoctores = new ArrayList<>();
-        for (Empleado emp : listaEmpleados()) {
-            String tempCondicion = emp.getCondicion();
-            if (tempCondicion.equalsIgnoreCase(condicion)) {
+    public static ArrayList<Doctor> listaDoctores(String condicion) {
+        ArrayList<Doctor> listaDoctores = new ArrayList<>();
+        for (Doctor emp : listaDoctores()) {
+            String tempCargo = emp.getCargo();
+            if (tempCargo.equalsIgnoreCase(condicion)) {
                 listaDoctores.add(emp);
 //                break;
             }

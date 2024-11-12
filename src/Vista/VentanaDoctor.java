@@ -1,8 +1,8 @@
 package Vista;
 
-public class VentanaEmpleado extends javax.swing.JInternalFrame {
+public class VentanaDoctor extends javax.swing.JInternalFrame {
 
-    public VentanaEmpleado() {
+    public VentanaDoctor() {
         initComponents();
     }
 

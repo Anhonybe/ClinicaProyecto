@@ -3,61 +3,61 @@ package Controlador;
 import EstructurasListas.ListaEnlazada;
 import Modelo.*;
 import Ordenamientos.OrdenarArreglosObjetos;
-import Persistencia.DatosClientes;
+import Persistencia.DatosEspecialidad;
 import Procesos.Busquedas;
 import Procesos.ProcesosVentana01;
-import Procesos.ProcesosVentanaCliente;
+import Procesos.ProcesosVentanaEspecialidad;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Vista.VentanaRegistroMascota;
+import Vista.VentanaRegistroPaciente;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 public class ControladorV1 implements ActionListener {
 
-    VentanaRegistroMascota vista;
-    ArregloMascotas Lista;
-    Mascota mascota;
+    VentanaRegistroPaciente vista;
+    ArregloPaciente Lista;
+    Paciente paciente;
 
-    public ControladorV1(VentanaRegistroMascota vr) {
+    public ControladorV1(VentanaRegistroPaciente vr) {
         vista = vr;
         //Cada componente se registra como un Action Listener
         vista.txtID.addActionListener(this);
         vista.txtNombre.addActionListener(this);
-        vista.txtRaza.addActionListener(this);
+        vista.txtGenero.addActionListener(this);
         vista.txtEdad.addActionListener(this);
-        vista.comboPropietario.addActionListener(this);
+        vista.cbxEspecialidad.addActionListener(this);
         vista.txtFecha.addActionListener(this);
         vista.btnGuardar.addActionListener(this);
         vista.btnBuscar.addActionListener(this);
         vista.btnOrdenar.addActionListener(this);
-        mostrarNumMascotas();
+        mostrarNumPacientes();
         //Faltaria la Opcion Subir Foto
-        Lista = new ArregloMascotas();
+        Lista = new ArregloPaciente();
         Lista.RecuperarDeArchivo(); //-- Recuperar Archivo Binario (Class: Arreglo Mascotas)
-        Lista.ActualizarCantidadMascotas(); //-- Actualizar cant de Mascotas (Class: Arreglo Mascotas)
+        Lista.ActualizarCantidadPacientes(); //-- Actualizar cant de Mascotas (Class: Arreglo Mascotas)
         ProcesosVentana01.MostrarEnTabla(vista, Lista.getLista()); //-- Mostar Datos en tabla
 //        ProcesosVentana01.MostrarResumen(vista, Lista.getLista()); //-- Mostar Resumen de Datos
-        ProcesosVentana01.PresentarVentanaRegistroMascota(vista); //--- Caracteristicas de la Ventana(titulo)
-        ListaEnlazada listaEnlazada = DatosClientes.RecuperarDeArchivo();
+        ProcesosVentana01.PresentarVentanaRegistroPaciente(vista); //--- Caracteristicas de la Ventana(titulo)
+        ListaEnlazada listaEnlazada = DatosEspecialidad.RecuperarDeArchivo();
         filaSeleccionada = -1;
         /*El combo propietarios se rellena gracias a la lista clientes que
         me retorna el método getListaClientes sacandolo del archivo.bin     
         */       
-        listaClientes = ProcesosVentanaCliente.getListaCliente(listaEnlazada);
+        listaPacientes = ProcesosVentanaEspecialidad.getListaEspecialidad(listaEnlazada);
         rellenarComboPropietarios();
         eventoClickTabla();
         initBotones();
     }
 
-    ArrayList<Cliente> listaClientes;
+    ArrayList<Especialidad> listaPacientes;
     
     private void rellenarComboPropietarios() {
-        vista.comboPropietario.removeAllItems();
-        for (Cliente cliente : listaClientes) {
-            String idPropietario = cliente.getCodigo();
-            vista.comboPropietario.addItem(idPropietario);
+        vista.cbxEspecialidad.removeAllItems();
+        for (Especialidad paciente : listaPacientes) {
+            String idPropietario = paciente.getCodigo();
+            vista.cbxEspecialidad.addItem(idPropietario);
         }
     }
     int filaSeleccionada = -1;
@@ -73,28 +73,28 @@ public class ControladorV1 implements ActionListener {
         });
     }
 
-    private void mostrarNumMascotas() {
-        vista.txtNumMascotas.setText("Mascotas: " + listaMascotas().length);
+    private void mostrarNumPacientes() {
+        vista.txtNumMascotas.setText("Pacientes: " + listaPacientes().length);
     }
 
     private void mostrarInfoPropietario(String idPropietario) {
         vista.txaResumenMascota.setText("");
-        String nombre = getCliente(idPropietario).getNombre();
-        String numeroMascota = getCliente(idPropietario).getNroMasc();
-        String numeroCell = getCliente(idPropietario).getNroCel();
-        vista.txaResumenMascota.append("\n\n\tDATOS DEL PROPIETARIO");
+        String nombre = getPaciente(idPropietario).getNombre();
+        String Nivel = getPaciente(idPropietario).getNivel();
+        String Descripcion = getPaciente(idPropietario).getDescripcion();
+        vista.txaResumenMascota.append("\n\n\tDATOS DE LA ATENCION");
         vista.txaResumenMascota.append("\n\n");
         vista.txaResumenMascota.append("\n - Codigo         : " + idPropietario);
         vista.txaResumenMascota.append("\n - Nombre         : " + nombre);
-        vista.txaResumenMascota.append("\n - Numero Mascota : " + numeroMascota);
-        vista.txaResumenMascota.append("\n - Numero Celular : " + numeroCell);
+        vista.txaResumenMascota.append("\n - Nivel          : " + Nivel);
+        vista.txaResumenMascota.append("\n - Descripcion : " + Descripcion);
     }
 
-    private Cliente getCliente(String idPropietario) {
-        for (Cliente cliente : listaClientes) {
-            String tempId = cliente.getCodigo();
-            if (idPropietario.equals(tempId)) {
-                return cliente;
+    private Especialidad getPaciente(String idEspecialidad) {
+        for (Especialidad paciente : listaPacientes) {
+            String tempId = paciente.getCodigo();
+            if (idEspecialidad.equals(tempId)) {
+                return paciente;
             }
         }
         return null;
@@ -107,13 +107,13 @@ public class ControladorV1 implements ActionListener {
     private void eliminar() {
         vista.btnEliminar.addActionListener((java.awt.event.ActionEvent evt) -> {
             if (filaSeleccionada >= 0) {
-                String idPropietario = vista.tblDatos.getValueAt(filaSeleccionada, 1).toString();
-                Lista.EliminarMascota(idPropietario);
+                String idEspecialidad = vista.tblDatos.getValueAt(filaSeleccionada, 1).toString();
+                Lista.EliminarPaciente(idEspecialidad);
                 ProcesosVentana01.MostrarEnTabla(vista, Lista.getLista()); //--- Muestra los datos en tabla
                 Lista.GuardarEnArchivo();
 //                ProcesosVentana01.MostrarResumen(vista, Lista.getLista()); //--- Muestra el Resumen en txtArea
                 Lista.GuardarEnArchivo();
-                mostrarNumMascotas();
+                mostrarNumPacientes();
             } else {
                 System.out.println("SELECCIONA");
                 JOptionPane.showMessageDialog(null, "Selecciona una fila", "Error", JOptionPane.ERROR_MESSAGE);
@@ -128,11 +128,11 @@ public class ControladorV1 implements ActionListener {
         //GUARDAR
         if (e.getSource() == vista.btnGuardar) {
             //---> continua aqui
-            mascota = ProcesosVentana01.LeerMascota(vista);
-            Lista.AgregarMascota(mascota);
+            paciente = ProcesosVentana01.LeerPaciente(vista);
+            Lista.AgregarPaciente(paciente);
             Lista.GuardarEnArchivo();
             Lista.RecuperarDeArchivo();
-            mostrarNumMascotas();
+            mostrarNumPacientes();
             ProcesosVentana01.MostrarEnTabla(vista, Lista.getLista()); //--- Muestra los datos en tabla
 //            ProcesosVentana01.MostrarResumen(vista, Lista.getLista()); //--- Muestra el Resumen en txtArea
             ProcesosVentana01.LimpiarEntradas(vista); //--- Limpia los campos de datos
@@ -140,22 +140,22 @@ public class ControladorV1 implements ActionListener {
 
         //METODOS BUSCAR
         if (e.getSource() == vista.btnBuscar) {
-            String codMascota = vista.txtBusqCod.getText();
+            String codPaciente = vista.txtBusqCod.getText();
             int opcCombo = vista.cbxOrdenar.getSelectedIndex();
-            ArregloMascotas arregloMas = new ArregloMascotas();
-            arregloMas.RecuperarDeArchivo();
-            Mascota listaMascot[] = arregloMas.getLista();
+            ArregloPaciente arregloPac = new ArregloPaciente();
+            arregloPac.RecuperarDeArchivo();
+            Paciente listaPasci[] = arregloPac.getLista();
             switch (opcCombo) {
                 case 0:
-                    Mascota mascotaEncontrada = Busquedas.buscarMascotaPorCodigo(listaMascot, codMascota);
-                    if (mascotaEncontrada != null) {
-                        JOptionPane.showMessageDialog(null, mascotaEncontrada.imprimir());
+                    Paciente pacienteEncontrado = Busquedas.buscarPacientePorCodigo(listaPasci, codPaciente);
+                    if (pacienteEncontrado != null) {
+                        JOptionPane.showMessageDialog(null, pacienteEncontrado.imprimir());
                     } else {
                         JOptionPane.showMessageDialog(null, "No se encontro", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                     break;
                 case 1:
-                    Mascota buSecuencial = Busquedas.buscarMascotaPorCodigo_SecuencialRecursiva(listaMascot, codMascota);
+                    Paciente buSecuencial = Busquedas.buscarPacientePorCodigo_SecuencialRecursiva(listaPasci, codPaciente);
                     if (buSecuencial != null) {
                         JOptionPane.showMessageDialog(null, buSecuencial.imprimir());
                     } else {
@@ -167,24 +167,23 @@ public class ControladorV1 implements ActionListener {
 
         //ACCION BOTON ORDENAR
         if (e.getSource() == vista.btnOrdenar) {           
-            ArregloMascotas arregloMas = new ArregloMascotas();
+            ArregloPaciente arregloMas = new ArregloPaciente();
             arregloMas.RecuperarDeArchivo();
-            Mascota listaMascot[] = arregloMas.getLista();
-            Mascota[] listaordenada = OrdenarArreglosObjetos.
-                            OrdernarMascotasPorCodigo(listaMascot);
+            Paciente listaPaci[] = arregloMas.getLista();
+            Paciente[] listaordenada = OrdenarArreglosObjetos.OrdernarPacientesPorCodigo(listaPaci);
             System.out.println("EEEOOO");
                     ProcesosVentana01.MostrarEnTabla(vista, listaordenada);
                     ProcesosVentana01.MostrarResumen(vista, listaordenada);
         }
     }
 
-    public static Mascota[] listaMascotas() {
-        ArregloMascotas arregloMas = new ArregloMascotas();
+    public static Paciente[] listaPacientes() {
+        ArregloPaciente arregloMas = new ArregloPaciente();
         arregloMas.RecuperarDeArchivo();
-        Mascota listaMascot[] = arregloMas.getLista();
-        Mascota[] mascotasFiltradas = Arrays.stream(listaMascot)
-                .filter(pet -> pet != null)
-                .toArray(Mascota[]::new);
+        Paciente listaPaci[] = arregloMas.getLista();
+        Paciente[] mascotasFiltradas = Arrays.stream(listaPaci)
+                .filter(Pat -> Pat != null)
+                .toArray(Paciente[]::new);
         return mascotasFiltradas;
     }
 

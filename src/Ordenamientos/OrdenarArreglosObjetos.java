@@ -1,7 +1,7 @@
 package Ordenamientos;
 
-import Modelo.ArregloMascotas;
-import Modelo.Mascota;
+import Modelo.ArregloPaciente;
+import Modelo.Paciente;
 
 public class OrdenarArreglosObjetos {
     
@@ -17,9 +17,9 @@ public class OrdenarArreglosObjetos {
         }
         return a;
     }
-    public static Mascota[] OrdernarMascotasPorCodigo(Mascota a[]) {
+    public static Paciente[] OrdernarPacientesPorCodigo(Paciente a[]) {
         for (int i = 1; i < a.length; i++) {
-            Mascota value = a[i];
+            Paciente value = a[i];
             int j = i;
             while (j > 0 && a[j - 1].getCodigo().compareTo(value.getCodigo()) > 0) {
                 a[j] = a[j - 1];

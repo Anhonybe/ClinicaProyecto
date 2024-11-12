@@ -13,22 +13,22 @@ import javax.swing.JOptionPane;
  *
  * @author NITRO 5
  */
-public class ArregloMascotas implements Serializable {
+public class ArregloPaciente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     //Atributos
-    private Mascota[] Lista;
+    private Paciente[] Lista;
     private static int cantMascotas = 0;
 
     //Constructor
-    public ArregloMascotas() {
-        Lista = new Mascota[50]; // 50 espacios de almacenamiento
+    public ArregloPaciente() {
+        Lista = new Paciente[50]; // 50 espacios de almacenamiento
     }
 
     //Metodos
-    public void AgregarMascota(Mascota mascota) {
+    public void AgregarPaciente(Paciente mascota) {
         // Crear un nuevo array con una longitud mayor en 1
-        Mascota[] tempList = new Mascota[Lista.length + 1];
+        Paciente[] tempList = new Paciente[Lista.length + 1];
 
         // Copiar los elementos del array actual al nuevo array
         for (int i = 0; i < Lista.length; i++) {
@@ -42,19 +42,19 @@ public class ArregloMascotas implements Serializable {
         Lista = tempList;
     }
 
-    public void EliminarMascota(String idMascota) {
+    public void EliminarPaciente(String idMascota) {
         // Crear una lista temporal para almacenar las mascotas que no ser�n eliminadas
-        ArrayList<Mascota> list = new ArrayList<>();
+        ArrayList<Paciente> list = new ArrayList<>();
 
         // Recorrer el array de mascotas y agregar a la lista temporal las mascotas que no tengan el ID especificado
-        for (Mascota m : Lista) {
+        for (Paciente m : Lista) {
             if (m != null && !m.getCodigo().equals(idMascota)) {
                 list.add(m);
             }
         }
 
         // Convertir la lista temporal de vuelta a un array
-        Mascota[] tempL = new Mascota[list.size()];
+        Paciente[] tempL = new Paciente[list.size()];
         tempL = list.toArray(tempL);
 
         // Asignar el nuevo array a la referencia de Lista
@@ -79,7 +79,7 @@ public class ArregloMascotas implements Serializable {
         try {
             FileInputStream fis = new FileInputStream("ListaMascotas.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            Lista = (Mascota[]) ois.readObject();
+            Lista = (Paciente[]) ois.readObject();
             ois.close();
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "ERROR no se puede recuperar.." + ex);
@@ -87,9 +87,9 @@ public class ArregloMascotas implements Serializable {
     }
     //metodo que actualizará el contador luego de recuperar los datos del archivo binario
 
-    public void ActualizarCantidadMascotas() {
+    public void ActualizarCantidadPacientes() {
         cantMascotas = 0;
-        for (Mascota mascota : Lista) {
+        for (Paciente mascota : Lista) {
             if (mascota != null) {
                 cantMascotas++;
             }
@@ -98,11 +98,11 @@ public class ArregloMascotas implements Serializable {
     //método que mostrar en pantalla la informacion cantidad empleados por area y suma sueldo
 
     //Getter and Setters
-    public Mascota[] getLista() {
+    public Paciente[] getLista() {
         return Lista;
     }
 
-    public void setLista(Mascota[] Lista) {
+    public void setLista(Paciente[] Lista) {
         this.Lista = Lista;
     }
 

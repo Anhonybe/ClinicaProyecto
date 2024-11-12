@@ -1,8 +1,8 @@
 package Vista;
 
-public class VentanaRegistroMascota extends javax.swing.JInternalFrame {
+public class VentanaRegistroPaciente extends javax.swing.JInternalFrame {
 
-    public VentanaRegistroMascota() {
+    public VentanaRegistroPaciente() {
         initComponents();
     }
 
@@ -14,13 +14,13 @@ public class VentanaRegistroMascota extends javax.swing.JInternalFrame {
         PanelDatos = new javax.swing.JPanel();
         txtID = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
-        txtRaza = new javax.swing.JTextField();
+        txtGenero = new javax.swing.JTextField();
         txtEdad = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnOrdenar = new javax.swing.JButton();
-        comboPropietario = new javax.swing.JComboBox<>();
+        cbxEspecialidad = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -52,7 +52,7 @@ public class VentanaRegistroMascota extends javax.swing.JInternalFrame {
             }
         });
 
-        txtRaza.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RAZA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtGenero.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RAZA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         txtEdad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "EDAD", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
@@ -90,11 +90,11 @@ public class VentanaRegistroMascota extends javax.swing.JInternalFrame {
             }
         });
 
-        comboPropietario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboPropietario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID_PROPIETARIO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        comboPropietario.addActionListener(new java.awt.event.ActionListener() {
+        cbxEspecialidad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbxEspecialidad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID_PROPIETARIO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        cbxEspecialidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboPropietarioActionPerformed(evt);
+                cbxEspecialidadActionPerformed(evt);
             }
         });
 
@@ -110,9 +110,9 @@ public class VentanaRegistroMascota extends javax.swing.JInternalFrame {
                     .addGroup(PanelDatosLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(comboPropietario, javax.swing.GroupLayout.Alignment.LEADING, 0, 280, Short.MAX_VALUE)
+                            .addComponent(cbxEspecialidad, javax.swing.GroupLayout.Alignment.LEADING, 0, 280, Short.MAX_VALUE)
                             .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRaza, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtGenero, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtID)))
                     .addGroup(PanelDatosLayout.createSequentialGroup()
@@ -133,11 +133,11 @@ public class VentanaRegistroMascota extends javax.swing.JInternalFrame {
                 .addGap(10, 10, 10)
                 .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
-                .addComponent(txtRaza, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addComponent(txtGenero, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
                 .addComponent(txtEdad, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
-                .addComponent(comboPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                .addComponent(cbxEspecialidad, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
                 .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -280,9 +280,9 @@ public class VentanaRegistroMascota extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void comboPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPropietarioActionPerformed
+    private void cbxEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxEspecialidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboPropietarioActionPerformed
+    }//GEN-LAST:event_cbxEspecialidadActionPerformed
 
     private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
         // TODO add your handling code here:
@@ -300,8 +300,8 @@ public class VentanaRegistroMascota extends javax.swing.JInternalFrame {
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnGuardar;
     public javax.swing.JButton btnOrdenar;
+    public javax.swing.JComboBox<String> cbxEspecialidad;
     public javax.swing.JComboBox<String> cbxOrdenar;
-    public javax.swing.JComboBox<String> comboPropietario;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JScrollPane jScrollPane3;
@@ -310,9 +310,9 @@ public class VentanaRegistroMascota extends javax.swing.JInternalFrame {
     public javax.swing.JTextField txtBusqCod;
     public javax.swing.JTextField txtEdad;
     public javax.swing.JTextField txtFecha;
+    public javax.swing.JTextField txtGenero;
     public javax.swing.JTextField txtID;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JLabel txtNumMascotas;
-    public javax.swing.JTextField txtRaza;
     // End of variables declaration//GEN-END:variables
 }

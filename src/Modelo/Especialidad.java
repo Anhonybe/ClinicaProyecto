@@ -2,29 +2,29 @@ package Modelo;
 
 import java.io.Serializable;
 
-public class Cliente implements Serializable {
+public class Especialidad implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     private String codigo;
     private String nombre;
-    private String nroMasc;
-    private String nroCel;
+    private String nivel;
+    private String descripcion;
 
-    public Cliente(String codigo, String nombre, String nroMasc, String nroCel) {
+    public Especialidad(String codigo, String nombre, String nivel, String descripcion) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.nroMasc = nroMasc;
-        this.nroCel = nroCel;
+        this.nivel = nivel;
+        this.descripcion = descripcion;
     }
     
     
-    public Cliente() {
+    public Especialidad() {
 
     }
 
     public Object[] Registro(int num) {
-        Object fila[] = {num, codigo, nombre, nroMasc, nroCel};
+        Object fila[] = {num, codigo, nombre, nivel, descripcion};
         return fila;
     }
 
@@ -45,19 +45,19 @@ public class Cliente implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getNroMasc() {
-        return nroMasc;
+    public String getNivel() {
+        return nivel;
     }
 
-    public void setNroMasc(String nroMasc) {
-        this.nroMasc = nroMasc;
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
     }
 
-    public String getNroCel() {
-        return nroCel;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNroCel(String nroCel) {
-        this.nroCel = nroCel;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }//fin de la clase

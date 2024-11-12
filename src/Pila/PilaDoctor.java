@@ -8,18 +8,15 @@ import javax.swing.JOptionPane;
 import Persistencia.*;
 import Procesos.*;
 
-/**
- *
- * @author FAMILIA
- */
-public class PilaEmpleado implements Serializable {
+
+public class PilaDoctor implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    LinkedList<Empleado> pila;
-    HashMap<String, Empleado> tablaHash;
-    TreeSet<Empleado> arbolBinario;
+    LinkedList<Doctor> pila;
+    HashMap<String, Doctor> tablaHash;
+    TreeSet<Doctor> arbolBinario;
 
-    public PilaEmpleado() {
+    public PilaDoctor() {
         pila = new LinkedList<>();
         tablaHash = new HashMap<>();
         arbolBinario = new TreeSet<>();
@@ -27,11 +24,11 @@ public class PilaEmpleado implements Serializable {
     }
 
     // Método que agrega datos a la pila
-    public void Agregar(Empleado obj) {
+    public void Agregar(Doctor obj) {
         pila.push(obj);
         tablaHash.put(obj.getCod(), obj);
         arbolBinario.add(obj);
-        DatosEmpleado.GuardarEnArchivo(this);
+        DatosDoctor.GuardarEnArchivo(this);
     }
 
     // Método que verifica el primer elemento de la pila
@@ -46,13 +43,13 @@ public class PilaEmpleado implements Serializable {
 
     // Método para eliminar un elemento de la pila
     public void Eliminar() {
-        String codigo = JOptionPane.showInputDialog(null, "Ingrese el código del empleado a eliminar:");
+        String codigo = JOptionPane.showInputDialog(null, "Ingrese el código del Doctor a eliminar:");
         if (codigo == null || codigo.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Código no ingresado. Operación cancelada.");
             return;
         }
 
-        Empleado eliminado = tablaHash.remove(codigo);
+        Doctor eliminado = tablaHash.remove(codigo);
         if (eliminado == null) {
             JOptionPane.showMessageDialog(null, "El código " + codigo + " no existe en la pila.");
             return;
@@ -60,13 +57,13 @@ public class PilaEmpleado implements Serializable {
 
         pila.remove(eliminado);
         arbolBinario.remove(eliminado);
-        DatosEmpleado.GuardarEnArchivo(this);
-        JOptionPane.showMessageDialog(null, "Empleado con código " + codigo + " eliminado correctamente.");
+        DatosDoctor.GuardarEnArchivo(this);
+        JOptionPane.showMessageDialog(null, "Doctor con código " + codigo + " eliminado correctamente.");
     }
 
     // Método que busca un dato en la pila usando la tabla hash
     public void BuscarPorCodigo(String codbuscado) {
-        Empleado encontrado = tablaHash.get(codbuscado);
+        Doctor encontrado = tablaHash.get(codbuscado);
         if (encontrado != null) {
             Mensajes.MostrarTexto(encontrado.toString());
         } else {
@@ -75,11 +72,11 @@ public class PilaEmpleado implements Serializable {
     }
 
     // Getter y setter
-    public LinkedList<Empleado> getPila() {
+    public LinkedList<Doctor> getPila() {
         return pila;
     }
 
-    public void setPila(LinkedList<Empleado> pila) {
+    public void setPila(LinkedList<Doctor> pila) {
         this.pila = pila;
     }
 }

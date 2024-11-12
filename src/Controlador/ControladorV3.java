@@ -12,10 +12,10 @@ import Ordenamientos.OrdenarListaEnlazada;
 public class ControladorV3 implements ActionListener {//controlador ventana cliente
 
     ListaEnlazada Lista;
-    VentanaCliente vista;
+    VentanaEspecialidad vista;
     Nodo actual;
 
-    public ControladorV3(VentanaCliente vcl) {
+    public ControladorV3(VentanaEspecialidad vcl) {
         vista = vcl;
         vista.btnGuardarIni.addActionListener(this);
         vista.btnGuardarFin.addActionListener(this);
@@ -23,51 +23,51 @@ public class ControladorV3 implements ActionListener {//controlador ventana clie
         vista.btnEliminar.addActionListener(this);
         vista.btnOrdenar.addActionListener(this);
         vista.cbxOrdenar.addActionListener(this);
-        Lista = DatosClientes.RecuperarDeArchivo();
-        ProcesosVentanaCliente.MostrarDatos(vista, Lista);
+        Lista = DatosEspecialidad.RecuperarDeArchivo();
+        ProcesosVentanaEspecialidad.MostrarDatos(vista, Lista);
         clickTabla();
     }
 
-    //Metodo para escuchar los eventos de los componentes de Ventana Registro Cliente
+    //Metodo para escuchar los eventos de los componentes de Ventana Registro Especialidad
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vista.btnGuardarIni) {
-            Nodo nuevo = new Nodo(ProcesosVentanaCliente.LeerCliente(vista));
+            Nodo nuevo = new Nodo(ProcesosVentanaEspecialidad.LeerEspecialidad(vista));
             Lista.AgregarNodoInicio(nuevo);
             System.out.println("AGREGANDO NODO");
-            ProcesosVentanaCliente.MostrarDatos(vista, Lista);
-            DatosClientes.GuardarEnArchivo(Lista);
-            ProcesosVentanaCliente.LimpiarEntradas(vista);
+            ProcesosVentanaEspecialidad.MostrarDatos(vista, Lista);
+            DatosEspecialidad.GuardarEnArchivo(Lista);
+            ProcesosVentanaEspecialidad.LimpiarEntradas(vista);
         }//fin de btnAgregarInicio
         if (e.getSource() == vista.btnGuardarFin) {
-            Nodo nuevo = new Nodo(ProcesosVentanaCliente.LeerCliente(vista));
+            Nodo nuevo = new Nodo(ProcesosVentanaEspecialidad.LeerEspecialidad(vista));
             Lista.AgregarNodoFinal(nuevo);
             System.out.println("AGREGANDO FINAL");
-            ProcesosVentanaCliente.MostrarDatos(vista, Lista);
-            DatosClientes.GuardarEnArchivo(Lista);
-            ProcesosVentanaCliente.LimpiarEntradas(vista);
+            ProcesosVentanaEspecialidad.MostrarDatos(vista, Lista);
+            DatosEspecialidad.GuardarEnArchivo(Lista);
+            ProcesosVentanaEspecialidad.LimpiarEntradas(vista);
         }//fin de btnAgregarInicio
         if (e.getSource() == vista.btnBuscar) {
             String codbuscado = JOptionPane.showInputDialog(
                     "Ingrese el codigo a buscar...");
-            actual = Lista.BuscarCliente(codbuscado);
+            actual = Lista.BuscarEspecialidad(codbuscado);
             if (actual == null) {
                 JOptionPane.showMessageDialog(null,
                         "El c�digo " + codbuscado + " no existe en la lista..");
             } else {
-                ProcesosVentanaCliente.MostrarDatosNodo(actual, vista);
+                ProcesosVentanaEspecialidad.MostrarDatosNodo(actual, vista);
                 vista.txtCodigo.requestFocus();
             }
         }//fin de buscar
         if (e.getSource() == vista.btnEliminar) {
             int respuesta = JOptionPane.showConfirmDialog(null,
-                    "¿Desea eliminar a " + actual.getCli().getCodigo() + "- " + actual.getCli().getNombre() + "?",
+                    "¿Desea eliminar a " + actual.getEsp().getCodigo() + "- " + actual.getEsp().getNombre() + "?",
                     "Confirmar!!!!", JOptionPane.YES_NO_OPTION);
             if (respuesta == 0) {//0: se seleccione YES
-                Lista.EliminarCliente(actual);
-                ProcesosVentanaCliente.MostrarDatos(vista, Lista);
-                DatosClientes.GuardarEnArchivo(Lista);
-                ProcesosVentanaCliente.LimpiarEntradas(vista);
+                Lista.EliminarEspecialidad(actual);
+                ProcesosVentanaEspecialidad.MostrarDatos(vista, Lista);
+                DatosEspecialidad.GuardarEnArchivo(Lista);
+                ProcesosVentanaEspecialidad.LimpiarEntradas(vista);
             }
         }//fin eliminar
         if (e.getSource() == vista.btnOrdenar) {
@@ -88,8 +88,8 @@ public class ControladorV3 implements ActionListener {//controlador ventana clie
                     break;
             }
 
-            ProcesosVentanaCliente.MostrarDatos(vista, listaParaMostrar);
-            ProcesosVentanaCliente.LimpiarEntradas(vista);
+            ProcesosVentanaEspecialidad.MostrarDatos(vista, listaParaMostrar);
+            ProcesosVentanaEspecialidad.LimpiarEntradas(vista);
         }
 
     }//fin del action
@@ -100,7 +100,7 @@ public class ControladorV3 implements ActionListener {//controlador ventana clie
             public void mouseClicked(java.awt.event.MouseEvent evt) {                            
                 int filaSeleccionada = vista.tblDatos.getSelectedRow();
                 String codbuscado = vista.tblDatos.getValueAt(filaSeleccionada, 1).toString();
-                actual = Lista.BuscarCliente(codbuscado);
+                actual = Lista.BuscarEspecialidad(codbuscado);
             }
         });
 

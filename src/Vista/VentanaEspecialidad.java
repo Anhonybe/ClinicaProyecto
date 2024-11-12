@@ -8,12 +8,12 @@ package Vista;
  *
  * @author FAMILIA
  */
-public class VentanaCliente extends javax.swing.JInternalFrame {
+public class VentanaEspecialidad extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form VentanaCliente
      */
-    public VentanaCliente() {
+    public VentanaEspecialidad() {
         initComponents();
     }
 
@@ -31,8 +31,8 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         txtCodigo = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
-        txtCelular = new javax.swing.JTextField();
-        cbxNroMascota = new javax.swing.JComboBox<>();
+        txtDescripcion = new javax.swing.JTextField();
+        cbxNivel = new javax.swing.JComboBox<>();
         btnGuardarIni = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
@@ -69,10 +69,10 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        txtCelular.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CELULAR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtDescripcion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DESCRIPCION", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
-        cbxNroMascota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
-        cbxNroMascota.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NRO DE MASCOTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        cbxNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        cbxNivel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NIVEL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         btnGuardarIni.setBackground(new java.awt.Color(102, 102, 255));
         btnGuardarIni.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -108,8 +108,8 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGuardarIni, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbxNroMascota, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtCelular)
+                    .addComponent(cbxNivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDescripcion)
                     .addComponent(txtNombre)
                     .addComponent(txtCodigo)
                     .addComponent(btnGuardarFin, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
@@ -123,9 +123,9 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(cbxNroMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(btnGuardarIni, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
@@ -260,7 +260,7 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
     public javax.swing.JButton btnGuardarFin;
     public javax.swing.JButton btnGuardarIni;
     public javax.swing.JButton btnOrdenar;
-    public javax.swing.JComboBox<String> cbxNroMascota;
+    public javax.swing.JComboBox<String> cbxNivel;
     public javax.swing.JComboBox<String> cbxOrdenar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -269,8 +269,8 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable tblDatos;
     public javax.swing.JTextArea txaResumen;
-    public javax.swing.JTextField txtCelular;
     public javax.swing.JTextField txtCodigo;
+    public javax.swing.JTextField txtDescripcion;
     public javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

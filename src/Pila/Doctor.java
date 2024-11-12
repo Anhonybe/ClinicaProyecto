@@ -2,35 +2,35 @@ package Pila;
 
 import java.io.Serializable;
 
-public class Empleado implements Comparable<Empleado>, Serializable {
+public class Doctor implements Comparable<Doctor>, Serializable {
 
     private static final long serialVersionUID = 1L;
     private String cod;
     private String nombre;
-    private String condicion; // Parámetro existente
+    private String cargo; // Parámetro existente
     private String area;
 
     // Constructor predeterminado
-    public Empleado() {
+    public Doctor() {
     }
 
     // Constructor con parámetros
-    public Empleado(String cod, String nombre, String condicion, String area) {
+    public Doctor(String cod, String nombre, String cargo, String area) {
         this.cod = cod;
         this.nombre = nombre;
-        this.condicion = condicion;
+        this.cargo = cargo;
         this.area = area;
     }
 
     @Override
-    public int compareTo(Empleado other) {
+    public int compareTo(Doctor other) {
         return this.cod.compareTo(other.cod);
     }
 
     @Override
     public String toString() {
         return "Empleado \n"
-                + "cod: " + cod + "\nombre: " + nombre + "\ncondicion: " + condicion + "area";
+                + "cod: " + cod + "\nombre: " + nombre + "\ncargo: " + cargo + "area"+area;
     }
 
     public String getCod() {
@@ -49,12 +49,12 @@ public class Empleado implements Comparable<Empleado>, Serializable {
         this.nombre = nombre;
     }
 
-    public String getCondicion() {
-        return condicion;
+    public String getCargo() {
+        return cargo;
     }
 
-    public void setCondicion(String condicion) {
-        this.condicion = condicion;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public String getArea() {

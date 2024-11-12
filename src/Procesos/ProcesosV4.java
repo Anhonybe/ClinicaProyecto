@@ -10,22 +10,22 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ProcesosV4 {
 
-    public static Empleado LeerEmpleado(VentanaEmpleado vem) {
+    public static Doctor LeerDoctor(VentanaDoctor vem) {
         String cod = vem.txtCodigoEmp.getText();
         String nombre = vem.txtNomEmp.getText();
         String condicion = vem.cbxCondicion.getSelectedItem().toString();
         String area = vem.comboArea.getSelectedItem().toString();
-        return new Empleado(cod, nombre, condicion, area);
+        return new Doctor(cod, nombre, condicion, area);
     }
 
-    public static void LimpiarEntradas(VentanaEmpleado vem) {
+    public static void LimpiarEntradas(VentanaDoctor vem) {
         vem.txtCodigoEmp.setText("");
         vem.txtNomEmp.setText("");
         vem.cbxCondicion.setSelectedIndex(0);
         vem.txtCodigoEmp.requestFocus();
     }
 
-    public static void Presentacion(VentanaEmpleado vem) {
+    public static void Presentacion(VentanaDoctor vem) {
         vem.setTitle("Registro de Empleados - Uso de Pilas");
         vem.cbxCondicion.removeAllItems();
         vem.cbxCondicion.addItem("DOCTOR");
@@ -34,17 +34,17 @@ public class ProcesosV4 {
         vem.cbxCondicion.addItem("LIMPIEZA");
     }
 
-    public static void MostrarDatosEnTabla(VentanaEmpleado vem, PilaEmpleado lista) {
+    public static void MostrarDatosEnTabla(VentanaDoctor vem, PilaDoctor lista) {
         String[] titulos = {"Nro", "Codigo", "Nombre", "Condicion", "Area"};
         DefaultTableModel mt = new DefaultTableModel(null, titulos);
         vem.tblDatosEmp.setModel(mt);
         for (int i = 0; i < lista.getPila().size(); i++) {
-            Empleado emp = lista.getPila().get(i);
+            Doctor emp = lista.getPila().get(i);
             String[] rowData = {
                 String.valueOf(i + 1),
                 emp.getCod(),
                 emp.getNombre(),
-                emp.getCondicion(),
+                emp.getCargo(),
                 emp.getArea()
             };
             mt.addRow(rowData);

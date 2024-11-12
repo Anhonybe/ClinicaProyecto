@@ -5,15 +5,11 @@ import java.io.*;
 import Pila.*;
 import Procesos.*;
 
-/**
- *
- * @author FAMILIA
- */
-public class DatosEmpleado {
+public class DatosDoctor {
 
-    public static void GuardarEnArchivo(PilaEmpleado Lista) {
+    public static void GuardarEnArchivo(PilaDoctor Lista) {
         try {
-            FileOutputStream fos = new FileOutputStream("InfoEmpleado.bin");
+            FileOutputStream fos = new FileOutputStream("InfoDoctor.bin");
             try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
                 oos.writeObject(Lista);
             }
@@ -22,12 +18,12 @@ public class DatosEmpleado {
         }
     }//fin guardar   
 
-    public static PilaEmpleado RecuperaDeArchivo() {
-        PilaEmpleado Lista = new PilaEmpleado();
+    public static PilaDoctor RecuperaDeArchivo() {
+        PilaDoctor Lista = new PilaDoctor();
         try {
-            FileInputStream fis = new FileInputStream("InfoEmpleado.bin");
+            FileInputStream fis = new FileInputStream("InfoDoctor.bin");
             try (ObjectInputStream ois = new ObjectInputStream(fis)) {
-                Lista = (PilaEmpleado) ois.readObject();
+                Lista = (PilaDoctor) ois.readObject();
             }
         } catch (IOException | ClassNotFoundException ex) {
             Mensajes.MostrarTexto("ERROR no se puede recuperar Pila.." + ex);

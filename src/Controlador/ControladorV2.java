@@ -1,11 +1,11 @@
 package Controlador;
 
 import Modelo.Cita;
-import Modelo.Mascota;
+import Modelo.Paciente;
 import Modelo.Servicio;
 import Persistencia.DataCita;
 import Persistencia.DataServicio;
-import Pila.Empleado;
+import Pila.Doctor;
 import Vista.VentanaCitas;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -97,7 +97,7 @@ public class ControladorV2 {
     private void rellenarComboIDMascota() {
         try {
             c.comboIdMascota.removeAllItems();
-            for (Mascota mas : ControladorV1.listaMascotas()) {
+            for (Paciente mas : ControladorV1.listaPacientes()) {
                 c.comboIdMascota.addItem(mas.getCodigo());
             }
         } catch (Exception e) {
@@ -116,7 +116,7 @@ public class ControladorV2 {
                 Servicio serTemp = listaServiciosEncontrador.get(idPosicionServicio);
 //            System.out.println("ID SERVICIO: " + listaServiciosEncontrador.get(idPosicionServicio).getIdServicio());
                 c.comboIdDoctor.removeAllItems();
-                for (Empleado emp : ControladorV4.listaDoctores("doctor")) {
+                for (Doctor emp : ControladorV4.listaDoctores("doctor")) {
                     String areaTemp = serTemp.getArea();
                     if (areaTemp.equals(emp.getArea())) {
                         c.comboIdDoctor.addItem(emp.getNombre());
@@ -138,7 +138,7 @@ public class ControladorV2 {
                 String idMascota = (String) c.comboIdMascota.getSelectedItem();
                 /*hago un for each recoriendo toda la lista de mascotas que existen 
                 */
-                for (Mascota mas : ControladorV1.listaMascotas()) {
+                for (Paciente mas : ControladorV1.listaPacientes()) {
                     //Recojo temporalmente el código del propietario asignado a la mascota                    
                     String idPropietario = mas.getCodigo();
                     //Una vez teniendo el´código del propietario 
@@ -146,7 +146,7 @@ public class ControladorV2 {
                     //y procedemos a mostrar el id del propietario asignado
                     if (idPropietario.equals(idMascota)) {
                         //y se muestra automáticamente en el TXTPropietario
-                        c.txtIDPropietario.setText(mas.getPropietario());
+                        c.txtIDPropietario.setText(mas.getEspecialidad());
                     }
                 }
             } catch (Exception e) {

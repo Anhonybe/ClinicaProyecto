@@ -1,7 +1,7 @@
 package Controlador;
 
 import Modelo.Cita;
-import Modelo.Mascota;
+import Modelo.Paciente;
 import Modelo.Servicio;
 import Persistencia.DataServicio;
 import Procesos.ProcesosServicio;
@@ -47,7 +47,7 @@ public class ControladorV5 {
 
     private void rellenarComboIDMascota() {
         c.comboMascota.removeAllItems();
-        for (Mascota mas : ControladorV1.listaMascotas()) {
+        for (Paciente mas : ControladorV1.listaPacientes()) {
             c.comboMascota.addItem(mas.getCodigo());
         }
     }

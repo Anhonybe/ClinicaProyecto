@@ -6,20 +6,20 @@ import java.util.Comparator;
 
 public class Busquedas {
 
-    public static Mascota buscarMascotaPorCodigo(Mascota[] mascotas, String codigo) {
+    public static Paciente buscarPacientePorCodigo(Paciente[] mascotas, String codigo) {
         // Filtrar elementos nulos
-        Mascota[] mascotasFiltradas = Arrays.stream(mascotas)
+        Paciente[] mascotasFiltradas = Arrays.stream(mascotas)
                 .filter(mascota -> mascota != null)
-                .toArray(Mascota[]::new);
+                .toArray(Paciente[]::new);
 
         // Ordenar el arreglo
-        Arrays.sort(mascotasFiltradas, Comparator.comparing(Mascota::getCodigo));
+        Arrays.sort(mascotasFiltradas, Comparator.comparing(Paciente::getCodigo));
 
         // Llamar a la búsqueda binaria recursiva
         return busquedaBinaria(mascotasFiltradas, codigo, 0, mascotasFiltradas.length - 1);
     }
 
-    private static Mascota busquedaBinaria(Mascota[] mascotas, String codigo, int inicio, int fin) {
+    private static Paciente busquedaBinaria(Paciente[] mascotas, String codigo, int inicio, int fin) {
         if (inicio > fin) {
             return null; // No encontrado
         }
@@ -38,30 +38,30 @@ public class Busquedas {
 
 //    public static void main(String[] args) {
 //        // Ejemplo de uso
-//        Mascota[] mascotas = {
-//            new Mascota("001", "Firulais", "Pastor Alemán", 5, "Juan Pérez", "2022-01-01"),
-//            new Mascota("002", "Pelusa", "Persa", 3, "María Gómez", "2023-02-01"),
-//            new Mascota("003", "Rex", "Bulldog", 2, "Carlos Díaz", "2021-03-01")
+//        Paciente[] mascotas = {
+//            new Paciente("001", "Firulais", "Pastor Alemán", 5, "Juan Pérez", "2022-01-01"),
+//            new Paciente("002", "Pelusa", "Persa", 3, "María Gómez", "2023-02-01"),
+//            new Paciente("003", "Rex", "Bulldog", 2, "Carlos Díaz", "2021-03-01")
 //        };
 //
-//        Mascota buscada = buscarMascotaPorCodigo(mascotas, "00s2");
+//        Paciente buscada = buscarPacientePorCodigo(mascotas, "00s2");
 //        if (buscada != null) {
-//            System.out.println("Mascota encontrada: " + buscada.getNombre());
+//            System.out.println("Paciente encontrada: " + buscada.getNombre());
 //        } else {
-//            System.out.println("Mascota no encontrada.");
+//            System.out.println("Paciente no encontrada.");
 //        }
 //    }
 
-    public static Mascota buscarMascotaPorCodigo_SecuencialRecursiva(Mascota[] mascotas, String codigo) {
+    public static Paciente buscarPacientePorCodigo_SecuencialRecursiva(Paciente[] mascotas, String codigo) {
         return buscarMascotaPorCodigo_SecuencialRecursiva(mascotas, codigo, 0);
     }
 
-    private static Mascota buscarMascotaPorCodigo_SecuencialRecursiva(Mascota[] mascotas, String codigo, int indice) {
+    private static Paciente buscarMascotaPorCodigo_SecuencialRecursiva(Paciente[] mascotas, String codigo, int indice) {
         if (indice >= mascotas.length) {
             return null; // No encontrado
         }
 
-        Mascota mascota = mascotas[indice];
+        Paciente mascota = mascotas[indice];
 
         if (mascota != null && codigo.equals(mascota.getCodigo())) {
             return mascota; // Encontrado

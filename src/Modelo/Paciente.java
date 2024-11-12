@@ -2,52 +2,52 @@ package Modelo;
 
 import java.io.Serializable;
 
-public class Mascota implements Comparable<Mascota>, Serializable {
+public class Paciente implements Comparable<Paciente>, Serializable {
 
     private static final long serialVersionUID = 1L;
 
     //Atributos
     private String codigo;
     private String nombre;
-    private String raza;
+    private String genero;
     private int edad;
-    private String propietario;
+    private String especialidad;
     private String fecha;
 
-    public Mascota(String codigo, String nombre, String raza, int edad, String propietario, String fecha) {
+    public Paciente(String codigo, String nombre, String genero, int edad, String especialidad, String fecha) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.raza = raza;
+        this.genero = genero;
         this.edad = edad;
-        this.propietario = propietario;
+        this.especialidad = especialidad;
         this.fecha = fecha;
     }
 
-    // Crea un array de objetos con el número proporcionado y los atributos de la Mascota
+    // Crea un array de objetos con el número proporcionado y los atributos de la Paciente
     public Object[] Registro(int num) {
-        Object fila[] = {num, codigo, nombre, raza, edad, propietario, fecha};
+        Object fila[] = {num, codigo, nombre, genero, edad, especialidad, fecha};
         return fila;
     }
 
     //Constructor sin parametros
-    public Mascota() {
+    public Paciente() {
     }
 
     //Sobreescritura del metodo toString
     @Override
     public String toString() {
-        return "Mascota{" + "codigo=" + codigo + ", nombre=" + nombre + ", raza=" + raza + ", edad=" + edad
-                + ", propietario=" + propietario + ", fecha=" + fecha + '}';
+        return "Paciente{" + "codigo=" + codigo + ", nombre=" + nombre + ", genero=" + genero + ", edad=" + edad
+                + ", especialidad=" + especialidad + ", fecha=" + fecha + '}';
     }
 
     public String imprimir() {
         String datos = "";
-        datos += " MASCOTA";
+        datos += " PACIENTE";
         datos += "\n - Codigo     : " + codigo;
         datos += "\n - Nombre     : " + nombre;
-        datos += "\n - Raza       : " + raza;
+        datos += "\n - Genero       : " + genero;
         datos += "\n - Edad       : " + edad;
-        datos += "\n - Propietario: " + propietario;
+        datos += "\n - Especialidad: " + especialidad;
         datos += "\n - Fecha      : " + fecha;
         return datos;
     }
@@ -69,12 +69,12 @@ public class Mascota implements Comparable<Mascota>, Serializable {
         this.nombre = nombre;
     }
 
-    public String getRaza() {
-        return raza;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setRaza(String raza) {
-        this.raza = raza;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public int getEdad() {
@@ -85,12 +85,12 @@ public class Mascota implements Comparable<Mascota>, Serializable {
         this.edad = edad;
     }
 
-    public String getPropietario() {
-        return propietario;
+    public String getEspecialidad() {
+        return especialidad;
     }
 
-    public void setPropietario(String propietario) {
-        this.propietario = propietario;
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
     }
 
     public String getFecha() {
@@ -102,7 +102,7 @@ public class Mascota implements Comparable<Mascota>, Serializable {
     }
 
     @Override
-    public int compareTo(Mascota other) {
+    public int compareTo(Paciente other) {
         return this.codigo.compareTo(other.codigo);
     }
 }

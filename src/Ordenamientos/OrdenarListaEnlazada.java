@@ -2,7 +2,7 @@ package Ordenamientos;
 
 import EstructurasListas.ListaEnlazada;
 import EstructurasListas.Nodo;
-import Modelo.Cliente;
+import Modelo.Especialidad;
 
 public class OrdenarListaEnlazada {
 
@@ -169,7 +169,7 @@ public class OrdenarListaEnlazada {
 
         if (minNode != head) {
             // Si se encontró un nodo con un menor código, se intercambia con el nodo cabeza
-            Cliente temp = head.cli;
+            Especialidad temp = head.cli;
             head.cli = minNode.cli;
             minNode.cli = temp;
         }
